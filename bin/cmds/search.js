@@ -11,6 +11,7 @@ module.exports = async (args) => {
     const showlist = await inquirer.prompt([{
         type:"list",
         name:"anime",
+        message:"select anime from the list",
         choices: names
     },])
     console.log(showlist)
