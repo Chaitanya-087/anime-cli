@@ -1,0 +1,31 @@
+{
+  "name": "animex",
+  "version": "1.0.0",
+  "description": "cli for anime",
+  "main": "bin/animex.js",
+  "type":"commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "search",
+    "cli"
+  ],
+  "bin": {
+    "ani": "./bin/animex.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "boxen": "^7.0.0",
+    "chalk": "^4.1.2",
+    "cheerio": "^1.0.0-rc.12",
+    "cli-spinner": "^0.2.10",
+    "cli-spinners": "^2.7.0",
+    "inquirer": "^8.0.1",
+    "minimist": "^1.2.7",
+    "ora": "^6.1.2",
+    "request-promise": "^4.2.6",
+    "slugify": "^1.6.5"
+  }
+}
