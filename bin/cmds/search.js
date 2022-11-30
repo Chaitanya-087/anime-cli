@@ -7,7 +7,7 @@ module.exports = async (args) => {
     const term = args.s || "high school dxd"
     spinner.start()
     const names = await searchResults(term)
-    spinner.stop()
+    spinner.stop(true)
     const showlist = await inquirer.prompt([{
         type:"list",
         name:"anime",
