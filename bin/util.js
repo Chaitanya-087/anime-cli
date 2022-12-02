@@ -2,62 +2,45 @@ const { load } = require('cheerio')
 const slugify = require('slugify');
 const request = require('request-promise');
 
-const url = "https://gogoanime.ar/"
 
 const searchResults = async (payload) => {
     let names = []
-    try {
-        const html = await request(url + `search.html?keyword=${payload}`)
+    const url = `https://gogoanime.ar/search.html?keyword=${payload}`
+    const html = await request(url)
+    const $ = load(html)
+    $(".name").each((_,el) => names.push($(el).text().trim()))
+    return names
+}
+const getPopular = async (pages) => {
+    let names = []
+    for (let i = 1;i <pages; i++) {
+        const url = `https://gogoanime.ar/popular.html?page=${i}`
+        const html = await request(url)
         const $ = load(html)
-        let anime = $('li>p.name')
-
-        // console.log(link)
-        anime.map((_, e) => names.push($(e).text().trim()))
-        return names
-    } catch (err) {
-        return { status: 'fail', message: err.message }
+        $(".name").each((_,el) => names.push($(el).text().trim()))
     }
+    return names
+}
+const getEpisodes = async (name) => {
+    const cleaned_name = slugify(name.toLowerCase().replace(/[\\\.\+\*\?\^\$\[\]\(\)\{\}\/\'\#\:\!\=\|]/ig,''),'-')
+    const url = `https://gogoanime.ar/category/${cleaned_name}`
+    const html = await request(url)
+    const $ = load(html)
+    return  $("#episode_page > *:last-child > a").text().trim().split('-')[1]
 }
 
-const animeDetails = async (name) => {
-    try {
-        const keys = ["Type", "Plot Summary", "Genre Action", "Released", "Status", "Other name"]
-        let details = {}
-        const slugURL = url + '/category/' + slugify(name.toLowerCase().replace(':', '').replace('(', '').replace(')', ''), '-')
-        const res = await request(slugURL)
-        const $ = load(res)
-        $('.anime_info_body_bg>p.type').map((_, el) => {
-            let str = $(el).text().trim().replace(/[^a-z0-9áéíóúñü \.,_-]/gim, "").replace(/\s{2,}/, " ")
-            keys.forEach(key => {
-                if (str.startsWith(key)) {
-                    const value = str.replace(key, "").replace(',', "").trim()
-                    details[slugify(key, '_')] = value
-                }
-            })
-
-        })
-        return details
-    } catch (err) {
-        return { status: 'error', message: err.message }
-    }
+const getEpisodeLink = async (name,episode) => {
+    const cleaned_name = slugify(name.toLowerCase().replace(/[\\\.\+\*\?\^\$\[\]\(\)\{\}\/\'\#\:\!\=\|]/ig,''),'-')
+    const url = `https://gogoanime.ar/${cleaned_name}-episode-${episode}`
+    const html = await request(url)
+    const $ = load(html)
+    return 'https:' + $("iframe").attr('src')
+    
 }
-
-//testing
-// (async function(){
-//     let res = await searchResults('bleach thous')
-//     // res.each(el => console.log(slugify(el,'-')))
-//     const det = await animeDetails(res[0])
-//     console.log(det)
-//     const anim = url + slugify(res[0].toLowerCase().replace(':','').replace('(','').replace(')',''),'-') + '-' + 'episode' + '-' + '2' 
-//     // console.log(res)
-//     const content = await request(anim)
-//     const $ = load(content)
-//     const iframe = $('iframe').attr('src')
-//     console.log("https:" + iframe)
-//     console.log(anim)
-// })()
 
 module.exports = {
-    animeDetails,
-    searchResults
+    searchResults,
+    getEpisodes,
+    getEpisodeLink,
+    getPopular
 }

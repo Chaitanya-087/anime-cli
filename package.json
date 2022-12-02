@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "cli for anime",
   "main": "bin/animex.js",
-  "type":"commonjs",
+  "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,8 +24,11 @@
     "cli-spinners": "^2.7.0",
     "inquirer": "^8.0.1",
     "minimist": "^1.2.7",
+    "open": "^8.4.0",
     "ora": "^6.1.2",
+    "puppeteer": "^19.3.0",
     "request-promise": "^4.2.6",
+    "selenium-webdriver": "^4.6.1",
     "slugify": "^1.6.5"
   }
 }

@@ -14,9 +14,13 @@ module.exports = async () => {
     if (args.version || args.v) {
         cmd = 'version'
     }
+    if (args.popular || args.p) {
+        cmd = 'popular'
+    }
 
     switch(cmd) {
         case 'search': require('./cmds/search')(args); break;
+        case 'popular':require('./cmds/search')(args); break;
         case 'help': require('./cmds/help')(); break;
         case 'version': require('./cmds/version')(); break;
         default: console.log(chalk.red.bold(`${cmd} not a valid command`))
