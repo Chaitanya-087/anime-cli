@@ -1,12 +1,8 @@
-const patterns = require('cli-spinners')
 const Spinner = require('cli-spinner').Spinner
 
-const patternString = patterns.dots.frames.join('')
-const delay = patterns.dots.interval
+const spinner = new Spinner("processing.. %s")
 
-const spinner = new Spinner()
-
-spinner.setSpinnerDelay(delay)
-spinner.setSpinnerString(patternString)
+spinner.setSpinnerDelay(80)
+spinner.setSpinnerString('-\\|/')
 
 module.exports = spinner

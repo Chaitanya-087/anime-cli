@@ -1,8 +1,8 @@
 {
-  "name": "animix",
-  "version": "1.0.4",
-  "description": "cli for anime",
-  "main": "bin/animix.js",
+  "name": "binime",
+  "version": "1.0.0",
+  "description": "binge + anime - anime command line utility",
+  "main": "bin/anime.js",
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,19 +12,20 @@
     "url": "git+https://github.com/Chaitanya-087/anime-cli.git"
   },
   "keywords": [
-    "search",
+    "anime",
     "cli"
   ],
+
   "bin": {
-    "animix": "./bin/animix.js"
+    "binime": "./bin/anime.js"
   },
+
   "author": "Jonnadula Chaitanya",
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.12",
     "cli-spinner": "^0.2.10",
-    "cli-spinners": "^2.7.0",
     "inquirer": "^8.0.1",
     "minimist": "^1.2.7",
     "open": "^8.4.0",

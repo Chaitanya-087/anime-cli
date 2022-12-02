@@ -1,8 +1,8 @@
 const chalk = require('chalk');
 const menus = {
     main: `
-    Usage: animix [search|s] "<anime name>"
-           animix [popular|p]
+    Usage: binime [search|s] "<anime name>"
+           binime [popular|p]
 
     -search,-s              appropriate animes are listed
     -popular,-p             popular animes are listed
