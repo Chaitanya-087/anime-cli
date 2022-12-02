@@ -1,6 +1,6 @@
 {
   "name": "animix",
-  "version": "1.0.3",
+  "version": "1.0.0",
   "description": "cli for anime",
   "main": "bin/animix.js",
   "type": "commonjs",
