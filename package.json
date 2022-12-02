@@ -2,7 +2,7 @@
   "name": "animix",
   "version": "1.0.1",
   "description": "cli for anime",
-  "main": "bin/animex.js",
+  "main": "bin/animix.js",
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +16,7 @@
     "cli"
   ],
   "bin": {
-    "animix": "./bin/animex.js"
+    "animix": "./bin/animix.js"
   },
   "author": "Jonnadula Chaitanya",
   "license": "ISC",
