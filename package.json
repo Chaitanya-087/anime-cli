@@ -1,6 +1,6 @@
 {
   "name": "animex",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "cli for anime",
   "main": "bin/animex.js",
   "type": "commonjs",
