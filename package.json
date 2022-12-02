@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url":"git+https://github.com/Chaitanya-087/anime-cli.git"
+    "url": "git+https://github.com/Chaitanya-087/anime-cli.git"
   },
   "keywords": [
     "search",
