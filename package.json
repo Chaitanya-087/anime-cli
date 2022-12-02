@@ -1,5 +1,5 @@
 {
-  "name": "animex",
+  "name": "animix",
   "version": "1.0.1",
   "description": "cli for anime",
   "main": "bin/animex.js",
